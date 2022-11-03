@@ -1,46 +1,55 @@
-# Getting Started with Create React App
+[![npm version](https://badge.fury.io/js/%40garage-panda%2Fuse-before-unload.svg)](https://badge.fury.io/js/%40garage-panda%2Fuse-before-unload)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# use-before-unload
 
-## Available Scripts
+## About
 
-In the project directory, you can run:
+A React hook that uses the onbeforeunload (beforeunload) event and tracks when the user has been Refreshed or Canceled the default browser message.
+It is impossible to track if the user has left the page and is not a good idea to execute code after that.
 
-### `npm start`
+## Install
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+npm i @garage-panda/use-before-unload
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Usage
 
-### `npm test`
+```typescript
+import React from "react";
+import { useBeforeUnload } from "@garage-panda/use-before-unload";
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+function App() {
+  const setEnabledBeforeUnload = useBeforeUnload({
+    initEnable: false, // do you need to be enabled by default
+    onRefresh: () => {
+      // the page has been refreshed (the user has clicked Reload)
+    },
+    onCancel: () => {
+      // the user has clicked Cancel
+    }
+  });
 
-### `npm run build`
+  React.useEffect(() => {
+    setEnabledBeforeUnload(true); // you can dynamically enable or disable the beforeunload event
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    if (!sessionStorage.length) {
+      // the only way to know that the user has land on your site (and has not refreshed the page)
+    }
+  }, []);
+}
+```
+## Contributing
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Support
 
-### `npm run eject`
+If you like what you see, feel free to support us!
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<a href="https://www.buymeacoffee.com/garage.panda">
+<img src="https://img.buymeacoffee.com/button-api/?text=Buy us a beer&emoji=:beer:&slug=garage.panda&button_colour=FFDD00&font_colour=000000&font_family=Poppins&outline_colour=000000&coffee_colour=ffffff"></a>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## License
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+[MIT](https://choosealicense.com/licenses/mit/)

@@ -1,5 +1,5 @@
 {
-  "name": "use-before-unload",
+  "name": "@garage-panda/use-before-unload",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
