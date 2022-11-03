@@ -1,7 +1,6 @@
 {
   "name": "@garage-panda/use-before-unload",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -39,5 +38,22 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "[![npm version](https://badge.fury.io/js/%40garage-panda%2Fuse-before-unload.svg)](https://badge.fury.io/js/%40garage-panda%2Fuse-before-unload)",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/garage-panda/use-before-unload.git"
+  },
+  "keywords": [
+    "beforeunload",
+    "onbeforeunload",
+    "React"
+  ],
+  "author": "Garage Panda",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/garage-panda/use-before-unload/issues"
+  },
+  "homepage": "https://github.com/garage-panda/use-before-unload#readme"
 }
